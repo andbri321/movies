@@ -1,0 +1,2 @@
+module AllMoviesHelper
+end

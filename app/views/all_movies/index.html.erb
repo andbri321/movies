@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <%= video_player src: { mp4: url_for(@movies.first.file) }, controls: true,"autoplay": true %>
+    </div>
+  </div>
+  <div class="panel-footer">Panel footer</div>
+</div>
+
+<div class="panel panel-default">
+  <table class="table">
+    <thead>
+    <tr>
+      <th class="col-md-8" scope="col">Descrição</th>
+      <th class="col-md-2" scope="col">Visualizações</th>
+      <th class="col-md-1" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.description %></td>
+      <td><%= movie.visualization %></td>
+      <td>
+        <%= link_to edit_movie_path(movie), class:"btn btn-primary" do%>
+              <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  <%= paginate @movies %>
+</div>

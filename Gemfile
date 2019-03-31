@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+# https://rubygems.org/gems/video-js-rails/versions/4.3.0.1
+gem 'video-js-rails'
+gem "kaminari"
 gem "twitter-bootstrap-rails"
 gem "jquery-rails"
 

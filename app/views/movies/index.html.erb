@@ -1,43 +1,44 @@
 <div class="panel panel-default">
-  <div class="panel-body">
+  <div class="panel-heading">
     <div class="row">
-          <video controls >
-         <source src="leandro.mp4" type="video/mp4">
-         <source src="movie.ogg" type="video/ogg">
-        Your browser does not support the video tag.
-      </video>
-
+      <div class="col-md-11">
+          Lista dos Vídeos
+      </div>
+      <div class="col-md-1">
+        <%= link_to new_movie_path(), class:"btn btn-primary" do%>
+              <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="panel-footer">Panel footer</div>
-</div>
 
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <!-- <div class="panel-heading">Panel heading</div> -->
-
-  <!-- Table -->
   <table class="table">
     <thead>
     <tr>
       <th class="col-md-8" scope="col">Descrição</th>
-      <th class="col-md-4" scope="col">Visualizações</th>
+      <th class="col-md-2" scope="col">Visualizações</th>
+      <th class="col-md-1" scope="col"></th>
+      <th class="col-md-1" scope="col"></th>
     </tr>
   </thead>
   <tbody>
+    <% @movies.each do |movie| %>
     <tr>
-      <td>Mark</td>
-      <th scope="row">1</th>
+      <td><%= movie.description %></td>
+      <td><%= movie.visualization %></td>
+      <td>
+        <%= link_to edit_movie_path(movie), class:"btn btn-warning" do%>
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to movie_path(movie), method: :delete, data: { confirm: "Tem certeza que deseja excluir o vídeo ?" }, class:"btn btn-danger" do%>
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+        <% end %>
+      </td>
     </tr>
-    <tr>
-      <td>Mark</td>
-      <th scope="row">1</th>
-    </tr>
-    <tr>
-      <td>Mark</td>
-      <th scope="row">1</th>
-    </tr>
+    <% end %>
   </tbody>
-
   </table>
+  <%= paginate @movies %>
 </div>
