@@ -2,7 +2,8 @@ require 'rails_helper'
 RSpec.describe AllMoviesController, type: :controller do
   describe 'User with account' do
     let(:user) { User.create!(email: 'a@gmail.com', password:'123123') }
-    let(:movie) { Movie.create!(user: user,description:'des') }
+    let(:movie) { Movie.create!(user: user, description: 'Description',file: fixture_file_upload('leandro.mp4'))}
+
     before(:each) do
       sign_in(user)
 

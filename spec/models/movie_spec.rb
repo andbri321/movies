@@ -1,15 +1,11 @@
 require 'rails_helper'
 RSpec.describe Movie, type: :model do
   let(:user) { User.create!(email: "a@gmail.com",password: "123123") }
-  let(:movie) { Movie.create!(user: user, description: 'Description') }
+  let(:movie) { Movie.create!(user: user, description: 'Description',file: fixture_file_upload('leandro.mp4'))}
 
   it 'contagem das visualizações' do
     expect(movie.increment_visualization).to eql(true)
     expect(movie.visualization).to eql(1)
-  end
-
-  it 'associations' do
-    should belong_to :user
   end
 
   it 'validate description presence' do
