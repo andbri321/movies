@@ -33,7 +33,6 @@ class MoviesController < ApplicationController
  end
 
  def edit
-
  end
 
   def update
