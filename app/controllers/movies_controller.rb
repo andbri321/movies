@@ -11,7 +11,6 @@ class MoviesController < ApplicationController
 
   def create
    @movie = Movie.new(movie_params)
-   @movie.file.attach(params[:movie][:file])
 
    respond_to do |format|
      if @movie.save
@@ -26,7 +25,7 @@ class MoviesController < ApplicationController
 
  def destroy
    @movie.destroy
-    respond_to do |format|
+      respond_to do |format|
       format.html { redirect_to movies_path, notice: 'Movie was successfully destroyed.' }
       format.json { head :no_content }
     end
@@ -53,7 +52,7 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      {user:current_user}.merge(params.require(:movie).permit(:description))
+      {user:current_user}.merge(params.require(:movie).permit(:description,:file))
     end
 
 end

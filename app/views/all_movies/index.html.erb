@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
-      <%= video_player src: { mp4: url_for(@movies.first.file) }, controls: true,"autoplay": true %>
+      <%= video_player src: { mp4: url_for(@movie.file) }, controls: true,"autoplay": true %>
     </div>
   </div>
   <div class="panel-footer">Panel footer</div>
@@ -22,7 +22,7 @@
       <td><%= movie.description %></td>
       <td><%= movie.visualization %></td>
       <td>
-        <%= link_to edit_movie_path(movie), class:"btn btn-primary" do%>
+        <%= link_to all_movie_path(movie), class:"btn btn-primary" do%>
               <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
         <% end %>
       </td>
