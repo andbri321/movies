@@ -1,7 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="row">
+      <% unless @movies.empty? %>
       <%= video_player src: { mp4: url_for(@movie.file) }, controls: true,"autoplay": true %>
+      <% end %>
     </div>
   </div>
   <div class="panel-footer">Panel footer</div>
